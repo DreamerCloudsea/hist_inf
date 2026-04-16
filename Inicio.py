@@ -32,7 +32,6 @@ st.set_page_config(page_title='Tablero Inteligente', layout="wide")
 
 st.title('🧠 Tablero Inteligente')
 
-# 👉 Imagen que elegiste
 st.image(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Writing_on_the_whiteboard.jpg/960px-Writing_on_the_whiteboard.jpg",
     caption="Imagen ilustrativa de tablero",
@@ -44,7 +43,13 @@ st.subheader("Dibuja un boceto y analízalo con IA")
 # ================= SIDEBAR =================
 st.sidebar.title("⚙️ Configuración")
 
-stroke_width = st.sidebar.slider('Ancho de línea', 1, 30, 5)
+stroke_width = st.sidebar.slider('Ancho de línea', 1, 30, 15)
+stroke_color = st.sidebar.color_picker('Color del lápiz', '#FFFFFF')
+
+drawing_mode = st.sidebar.selectbox(
+    "Modo de dibujo",
+    ("freedraw", "line", "rect", "circle")
+)
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("🔑 API Key")
@@ -106,7 +111,7 @@ if canvas_result.image_data is not None and api_key and analyze_button:
             message_placeholder = st.empty()
             full_response = ""
 
-            response = openai.chat.completions.create(
+            response = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {
