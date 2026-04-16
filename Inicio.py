@@ -153,7 +153,7 @@ if st.session_state.analysis_done:
         with st.spinner("Creando historia... 📖"):
             story_prompt = f"Basándote en esta descripción: '{st.session_state.full_response}', crea una historia infantil breve y entretenida."
 
-            story_response = openai.chat.completions.create(
+            story_response = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": story_prompt}],
                 max_tokens=500,
