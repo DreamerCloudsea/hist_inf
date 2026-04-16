@@ -172,7 +172,7 @@ if st.session_state.analysis_done:
                 max_tokens=500,
             )
 
-            st.markdown("### 📖 Tu historia:")
+            st.markdown("### 📖 ¿Que dice de ti este dibujo?:")
             st.info(story_response.choices[0].message.content)
 
     if st.button("¿Cómo mejorar mi dibujo?"):
@@ -185,7 +185,7 @@ if st.session_state.analysis_done:
                 max_tokens=500,
             )
 
-            st.markdown("### 📖 Tu historia:")
+            st.markdown("### 📖 sugerencias:")
             st.info(story_response.choices[0].message.content)
 
 # ================= VALIDACIONES =================
