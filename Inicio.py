@@ -67,7 +67,7 @@ st.markdown("### ✏️ Área de dibujo")
 canvas_result = st_canvas(
     fill_color="rgba(255, 165, 0, 0.3)",
     stroke_width=stroke_width,
-    stroke_color="#000000",
+    stroke_color=stroke_color,
     background_color='#FFFFFF',
     height=300,
     width=300,
