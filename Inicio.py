@@ -48,7 +48,7 @@ stroke_width = st.sidebar.slider('Ancho de línea', 1, 30, 5)
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("🔑 API Key")
-ke = st.sidebar.text_input('Ingresa tu clave', type="password")
+ke = st.sidebar.text_input('Ingresa tu clave')
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("📌 Acerca de")
