@@ -147,11 +147,37 @@ if canvas_result.image_data is not None and api_key and analyze_button:
 # ================= HISTORIA =================
 if st.session_state.analysis_done:
     st.divider()
-    st.subheader("📚 Crear historia")
+    st.subheader("¿Que necesitas con tu dibujo?")
 
-    if st.button("✨ Generar historia infantil"):
+    if st.button("✨📚  Generar historia infantil"):
         with st.spinner("Creando historia... 📖"):
             story_prompt = f"Basándote en esta descripción: '{st.session_state.full_response}', crea una historia infantil breve y entretenida."
+
+            story_response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": story_prompt}],
+                max_tokens=500,
+            )
+
+            st.markdown("### 📖 Tu historia:")
+            st.info(story_response.choices[0].message.content)
+
+    if st.button("Analisis psicologico"):
+        with st.spinner("Analizando tu psique... 📖"):
+            story_prompt = f"Basándote en esta descripción: '{st.session_state.full_response}', haz un análisis psicologico de la persona que dibujó esa imagen."
+
+            story_response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": story_prompt}],
+                max_tokens=500,
+            )
+
+            st.markdown("### 📖 Tu historia:")
+            st.info(story_response.choices[0].message.content)
+
+    if st.button("¿Cómo mejorar mi dibujo?"):
+        with st.spinner("Creando sugerencias... 📖"):
+            story_prompt = f"Basándote en esta descripción: '{st.session_state.full_response}', da sugerencias de que más se puede agregar al dibujo"
 
             story_response = client.chat.completions.create(
                 model="gpt-4o-mini",
